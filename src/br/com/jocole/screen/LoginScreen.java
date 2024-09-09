@@ -18,9 +18,9 @@ public class LoginScreen extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public void logar() {
+    public void log() {
         //A linha abaixo executa uma query no banco de dados
-        String sql = "SELECT * FROM tbusuarios WHERE login=? and senha=? ";
+        String sql = "SELECT * FROM tbusers WHERE Login=? and Senha=? ";
         try {
             // Capturando a entrada de texto do formulario
             // As linhas abaixo preparam a consulta ao banco em funcao do
@@ -34,13 +34,13 @@ public class LoginScreen extends javax.swing.JFrame {
             //Se existir user e senha correspondente
             if (rs.next()) {
                 //Chamando a tela principal da aplicacao
-                MainScreen principal = new MainScreen();
+                MainScreen main = new MainScreen();
                 //Definindo como true
-                principal.setVisible(true);
+                main.setVisible(true);
                 //Comando para fechar a tela
                 this.dispose();
                 //Fechar conexao
-                connection.close();;
+                connection.close();
 
             } else {
                 //Caso o user ou senha sejam invalidos
@@ -56,17 +56,18 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     public LoginScreen() {
+        System.out.println("oi");
         initComponents();
         connection = ConnectionModule.connection();
+        //A linha abaixo altera o texto da aplicação
         if (connection != null) {
             //Caso esteja conectado
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/dbconnection.png")));
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png")));
         } else {
             //Caso nao esteja conectado 
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/dbnoconnection.png")));
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbnoconnection.png")));
         }
-    }
-
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,7 +90,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setBackground(new java.awt.Color(0, 255, 204));
+        setBackground(new java.awt.Color(153, 102, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
