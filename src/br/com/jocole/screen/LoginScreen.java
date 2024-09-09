@@ -27,7 +27,8 @@ public class LoginScreen extends javax.swing.JFrame {
             //que foi digitado nas caixas de texto. O ? é substituido pelo conteudo das variaveis
             pst = connection.prepareStatement(sql);
             pst.setString(1, txtUser.getText());
-            pst.setString(2, txtPassword.getText());
+            String capture = new String(txtPassword.getPassword());
+            pst.setString(2, capture);
             //A linha abaixo executa a query(Consulta)
             rs = pst.executeQuery();
             //Se existir user e senha correspondente
@@ -36,6 +37,10 @@ public class LoginScreen extends javax.swing.JFrame {
                 MainScreen principal = new MainScreen();
                 //Definindo como true
                 principal.setVisible(true);
+                //Comando para fechar a tela
+                this.dispose();
+                //Fechar conexao
+                connection.close();;
 
             } else {
                 //Caso o user ou senha sejam invalidos
@@ -45,6 +50,8 @@ public class LoginScreen extends javax.swing.JFrame {
             System.out.println(e);
             //Caso ocorra algum erro no bd
             JOptionPane.showMessageDialog(null, e);
+            //
+            
         }
     }
 
