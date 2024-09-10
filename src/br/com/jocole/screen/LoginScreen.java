@@ -18,24 +18,29 @@ public class LoginScreen extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public void logar() {
+    public void log() {
         //A linha abaixo executa uma query no banco de dados
-        String sql = "SELECT * FROM tbusuarios WHERE login=? and senha=? ";
+        String sql = "SELECT * FROM tbusers WHERE Login=? and Senha=? ";
         try {
             // Capturando a entrada de texto do formulario
             // As linhas abaixo preparam a consulta ao banco em funcao do
             //que foi digitado nas caixas de texto. O ? é substituido pelo conteudo das variaveis
             pst = connection.prepareStatement(sql);
             pst.setString(1, txtUser.getText());
-            pst.setString(2, txtPassword.getText());
+            String capture = new String(txtPassword.getPassword());
+            pst.setString(2, capture);
             //A linha abaixo executa a query(Consulta)
             rs = pst.executeQuery();
             //Se existir user e senha correspondente
             if (rs.next()) {
                 //Chamando a tela principal da aplicacao
-                MainScreen principal = new MainScreen();
+                MainScreen main = new MainScreen();
                 //Definindo como true
-                principal.setVisible(true);
+                main.setVisible(true);
+                //Comando para fechar a tela
+                this.dispose();
+                //Fechar conexao
+                connection.close();
 
             } else {
                 //Caso o user ou senha sejam invalidos
@@ -45,14 +50,24 @@ public class LoginScreen extends javax.swing.JFrame {
             System.out.println(e);
             //Caso ocorra algum erro no bd
             JOptionPane.showMessageDialog(null, e);
+            //
+            
         }
     }
 
     public LoginScreen() {
+        System.out.println("oi");
         initComponents();
         connection = ConnectionModule.connection();
-    }
-
+        //A linha abaixo altera o texto da aplicação
+        if (connection != null) {
+            //Caso esteja conectado
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png")));
+        } else {
+            //Caso nao esteja conectado 
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbnoconnection.png")));
+        }
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,11 +86,11 @@ public class LoginScreen extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setBackground(new java.awt.Color(0, 255, 204));
+        setBackground(new java.awt.Color(153, 102, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
@@ -109,7 +124,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logojocole.png"))); // NOI18N
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png"))); // NOI18N
+        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,7 +134,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,7 +184,7 @@ public class LoginScreen extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jLabel7)))
+                            .addComponent(lblStatus)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,7 +249,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

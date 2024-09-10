@@ -13,6 +13,7 @@ import java.sql.*;
 public class ConnectionModule {
 
     public static Connection connection() {
+        System.out.println("teste");
         java.sql.Connection connection = null;
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/dbjocole";
@@ -23,6 +24,7 @@ public class ConnectionModule {
             connection = DriverManager.getConnection(url, user, password);
             return connection;
         } catch (Exception e) {
+            System.out.println(e);
             return null;
         }
     }
