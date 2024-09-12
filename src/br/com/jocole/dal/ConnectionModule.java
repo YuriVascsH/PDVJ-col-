@@ -18,7 +18,7 @@ public class ConnectionModule {
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/dbjocole";
         String user = "root";
-        String password = "admin123";
+        String password = "";
         try {
             Class.forName(driver);      
             connection = DriverManager.getConnection(url, user, password);
