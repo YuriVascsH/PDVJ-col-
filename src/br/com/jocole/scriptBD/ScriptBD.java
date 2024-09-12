@@ -12,7 +12,7 @@ public class ScriptBD {
     //Codigo para acessar a aplicacao
     //CREATE TABLE dbjocole;
     //USE dbjocole;
-    //CREATE TABLE tbusers (iduser INTEGER AUTO_INCREMENT PRIMARY KEY, Login VARCHAR(30) NOT NULL, Senha VARCHAR(30) NOT NULL, Name VARCHAR(20) NOT NULL);
+    //CREATE TABLE tbusers (iduser INTEGER AUTO_INCREMENT PRIMARY KEY, Login VARCHAR(30) NOT NULL, Senha VARCHAR(30) NOT NULL, Nome VARCHAR(20) NOT NULL);
     //INSERT INTO tbusers(Login, Senha, Nome)VALUES ('admin', 'admin', 'Administrado');
     
 }

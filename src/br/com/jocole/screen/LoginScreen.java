@@ -99,7 +99,9 @@ public class LoginScreen extends javax.swing.JFrame {
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
                 jButton1ActionPerformed(evt);
+                log();
             }
         });
 
@@ -112,7 +114,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         jLabel2.setText("Senha:");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projectjocole/images/logo.png"))); // NOI18N
+        //jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logo.png"))); // NOI18N
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +122,7 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projectjocole/images/dbconnection.png"))); // NOI18N
+        //jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png"))); // NOI18N
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logojocole.png"))); // NOI18N
 
