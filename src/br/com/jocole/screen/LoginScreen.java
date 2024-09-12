@@ -57,16 +57,26 @@ public class LoginScreen extends javax.swing.JFrame {
 
     public LoginScreen() {
         System.out.println("oi");
+        jLabel3.setVisible(false);
         initComponents();
+        
         connection = ConnectionModule.connection();
         //A linha abaixo altera o texto da aplicação
-        if (connection != null) {
-            //Caso esteja conectado
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png")));
-        } else {
-            //Caso nao esteja conectado 
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbnoconnection.png")));
-        }
+ java.net.URL urlConnection = getClass().getResource("/br/com/jocole/images/dbconnection.png");
+    if (urlConnection != null) {
+        lblStatus.setIcon(new javax.swing.ImageIcon(urlConnection));
+    } else {
+        System.out.println("Ícone de conexão do banco não encontrado.");
+        // Defina um ícone padrão ou trate o erro de forma adequada
+    }
+
+    java.net.URL urlNoConnection = getClass().getResource("/br/com/jocole/imagAes/dbnoconnection.png");
+    if (urlNoConnection != null) {
+        lblStatus.setIcon(new javax.swing.ImageIcon(urlNoConnection));
+    } else {
+        System.out.println("Ícone de ausência de conexão do banco não encontrado.");
+        // Defina um ícone padrão ou trate o erro de forma adequada
+    } 
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,12 +91,12 @@ public class LoginScreen extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        //jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        //jLabel5 = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -114,7 +124,11 @@ public class LoginScreen extends javax.swing.JFrame {
 
         jLabel2.setText("Senha:");
 
+<<<<<<< HEAD
         //jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logo.png"))); // NOI18N
+=======
+        //jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projectjocole/images/logo.png"))); // NOI18N
+>>>>>>> 30ea1aa4ae4f051a0ea82bc03955cff628bc74cb
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,11 +136,18 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         //jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png"))); // NOI18N
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logojocole.png"))); // NOI18N
+=======
+        //jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projectjocole/images/dbconnection.png"))); // NOI18N
+>>>>>>> 30ea1aa4ae4f051a0ea82bc03955cff628bc74cb
 
         lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/dbconnection.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jocole/images/logo.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,8 +167,8 @@ public class LoginScreen extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(37, 37, 37)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -168,14 +189,13 @@ public class LoginScreen extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 48, Short.MAX_VALUE)
                                         .addComponent(jLabel1))
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
